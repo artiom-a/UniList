@@ -62,7 +62,6 @@ public class UniListTest {
         System.out.println(sList.isEmpty());
         System.out.println(sList.get(0));
         assertTrue(sList.isEmpty());
-
     }
 
     @Test
