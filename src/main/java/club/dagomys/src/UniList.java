@@ -27,7 +27,7 @@ public class UniList<T> implements CustomList<T> {
 
     private Object[] increase(int minArrayCapacity) {
         int oldCapacity = array.length;
-        if (oldCapacity > 0 || array != EMPTY_ARRAY) {
+        if (oldCapacity > 0 || array != DEF_ARRAY) {
             int newCapacity = ArraysSupport.newLength(oldCapacity,
                     minArrayCapacity - oldCapacity,
                     oldCapacity >> 1);
@@ -44,7 +44,7 @@ public class UniList<T> implements CustomList<T> {
     @Override
     public boolean add(T element) {
         add(element, array, size);
-        return false;
+        return true;
     }
 
     @Override
@@ -61,9 +61,9 @@ public class UniList<T> implements CustomList<T> {
         return true;
     }
 
-    private void remove(Object[] inboundArray, int index){
+    private void remove(Object[] inboundArray, int index) {
         final int newSize;
-        if ((newSize = size -1)>index)
+        if ((newSize = size - 1) > index)
             System.arraycopy(inboundArray, index + 1, inboundArray, index, newSize - index);
         inboundArray[this.size = newSize] = null;
     }
@@ -85,13 +85,22 @@ public class UniList<T> implements CustomList<T> {
 
     @Override
     public void clear() {
-
+        final Object[] newArray = array;
+        for (int to = this.size, i = this.size = 0; i < to; i++)
+            newArray[i] = null;
     }
+
+    @Override
+    public int getSize() {
+        return size;
+    }
+
 
     @Override
     public T sort() {
         return null;
     }
+
 
     @Override
     public T sort(Comparator<T> comparator) {
@@ -100,6 +109,6 @@ public class UniList<T> implements CustomList<T> {
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return array.length == 0;
     }
 }
