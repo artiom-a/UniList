@@ -1,4 +1,4 @@
-package tests.club.dagomys.src;
+package club.dagomys.src;
 
 import club.dagomys.src.UniList;
 import club.dagomys.src.UniListQuickSort;
