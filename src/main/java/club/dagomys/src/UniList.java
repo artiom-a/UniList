@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Objects;
 
+
+
 /**
  * Реализация класса который имплементирует созданный в учебных целях интерфейс CustomList<T>
  * Создание собственного ArrayList<>
@@ -28,7 +30,7 @@ public class UniList<T> implements CustomList<T> {
         if (size <= 0) {
             throw new IllegalArgumentException("Size <= 0!");
         } else
-            array = (T[]) new Object[size];
+            array = new Object[size];
     }
 
     /**
@@ -86,7 +88,7 @@ public class UniList<T> implements CustomList<T> {
      * Возвращает элемент по индексу
      *
      * @param index - индекс возвращаемого элемента
-     * @return
+     * @return element [T]
      */
     @Override
     public T get(int index) {
@@ -103,7 +105,7 @@ public class UniList<T> implements CustomList<T> {
      * Удаляет элемент по index и возвращает удаленный element
      *
      * @param index - индекс удаляемого элемента
-     * @return
+     * @return removed element T
      */
     @Override
     public T remove(int index) {
